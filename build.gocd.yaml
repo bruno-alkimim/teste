@@ -1,0 +1,28 @@
+environments:
+  build:
+    environment_variables:
+      REGISTRY_URI: "myregistry.com.br"
+    pipelines:
+      - build-testing
+pipelines:
+  build-testing:
+    group: mygroup
+    label_template: "0.0-${COUNT}"
+    locking: off
+    materials:
+      source:
+        git: https://github.com/bruno-alkimim/teste.git
+        branch: master
+    stages: 
+      - push: 
+          fetch_materials: yes
+          clean_workspace: yes
+          jobs:
+            docker_build: 
+              resources:
+               - DOCKER_DEV
+              tasks:
+               - exec:
+                   command: make
+                   arguments:
+                    - "push-image"
