@@ -23,7 +23,7 @@ pipelines:
                - DOCKER_DEV
               tasks:
                - exec:
-                   working_directory: /home/yellowking/rep
+                   working_directory: ./rep
                    command: make
                    arguments:
                     - "push-image"
