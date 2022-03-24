@@ -1,2 +1,5 @@
+IMAGE_TAG=webapp:$(GO_PIPELINE_LABEL)
+
 push-image:
-	echo $(GO_PIPELINE_LABEL)
+	docker build -t $(IMAGE_TAG) -f docker/production/Dockerfile .
+	docker push $(IMAGE_TAG)
