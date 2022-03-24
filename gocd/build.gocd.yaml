@@ -23,6 +23,10 @@ pipelines:
                - DOCKER_DEV
               tasks:
                - exec:
+                   command: cd
+                   arguments:
+                    - "~/rep"
+               - exec:
                    command: make
                    arguments:
                     - "push-image"
