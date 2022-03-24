@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  webapp:
+    build: 
+      context: .
+      dockerfile: docker/development/Dockerfile
+    volumes:
+      - /home/yellowking/rep:/home/yellowking/rep
+    working_dir: /home/yellowking/rep
